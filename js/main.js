@@ -5,6 +5,7 @@ import { validationForm, featuresAdd} from "./form-validation.js";
 import { addFormData } from "./send-form.js";
 import { avatarUrl, imagesUrlsArr } from "./add_photos.js";
 import { sendForm } from "./server/send-form.js";
+import { removedForm } from "./removed-form.js";
 
 async function getCards(){
     try {
@@ -60,17 +61,17 @@ map.whenReady(() => {
     
 })
 
-const formData = document.querySelector('.ad-form')
+const resetFormBtn = document.querySelector('.ad-form__reset')
 
-formData.addEventListener('submit', e => {
+form.addEventListener('submit', e => {
     e.preventDefault()
     const featuresArr = featuresAdd()
     validationForm()
     form.reportValidity()
-    // form.checkValidity() === true ? addFormData(e.target, featuresArr): 0
     if(form.checkValidity() === true) {
         const objDataForm = addFormData(e.target, featuresArr,avatarUrl, imagesUrlsArr)
         sendForm(objDataForm)
-        console.log(cardsArr )
+        removedForm(form)
     }
 })
+resetFormBtn.addEventListener('click', e=> removedForm(form))
