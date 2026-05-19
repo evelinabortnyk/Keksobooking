@@ -4,6 +4,8 @@ const imagesContainer = document.querySelector('.ad-form__photo-container')
 const imagesAddButton = document.querySelector('#images')
 const formImgBlock = document.querySelector('.ad-form__photo')
 const image = document.querySelector('#form_photo')
+const start = document.createComment('fragment-start')
+const end = document.createComment('fragment-end')
 
 imagesAddButton.multiple = true
 
@@ -20,11 +22,15 @@ const fragment = new DocumentFragment()
 
 imagesAddButton.addEventListener('change', e =>{
     formImgBlock.classList.add('hidden')
+    fragment.appendChild(start)
+
     for( let file of e.target.files){
         let url = addPrewue(file)
         displayUsersPhotos(url)
+
         imagesUrlsArr.push(url)
     }
+    fragment.appendChild(end)
     imagesContainer.appendChild(fragment)
 })
 
@@ -41,4 +47,4 @@ function displayUsersPhotos(url) {
     fragment.appendChild(cloneElement)
 }
 
-export {avatarUrl, imagesUrlsArr}
+export {avatarUrl, imagesUrlsArr, start, end}
