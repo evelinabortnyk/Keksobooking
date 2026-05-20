@@ -1,7 +1,7 @@
 
 async function sendForm(obj) {
     try {
-        const response = await fetch('http://localhost:8080/newAdvert', {
+        const response = await fetch('http://localhost:8080/offer', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'aplication/json'

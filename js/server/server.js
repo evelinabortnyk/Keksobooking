@@ -9,7 +9,7 @@ http.createServer(function (req, res) {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
 
     // POST
-    if (req.method === 'POST' && req.url === '/advertsData') {
+    if (req.method === 'POST' && req.url === '/offert') {
         let body = ''
         console.log(req.method)
 
@@ -36,7 +36,7 @@ http.createServer(function (req, res) {
             }
         });
         return;
-    } else if(req.method === 'POST' && req.url === '/newAdvert'){
+    } else if(req.method === 'POST' && req.url === '/offer'){
         let body = ''
         req.on('data', chunk => {
             body += chunk.toString()
