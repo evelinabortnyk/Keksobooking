@@ -6,6 +6,7 @@ import { avatarUrl, imagesUrlsArr } from "./add_photos.js";
 import { sendForm } from "./server/send-form.js";
 import { removedForm } from "./removed-form.js";
 import { createMarkers } from "./places-markers-create.js";
+import { createFiteringArr } from "./data-filtred.js";
 
 async function getCards(){
     try {
@@ -25,9 +26,8 @@ const cardsArr = await getCards()
 
 Array.isArray(cardsArr)? createMarkers(cardsArr, map) : 0
 
-const housingType = document.querySelector('#type') 
-
-housingType.addEventListener('change', (e)=> {
+const formHhousingType = document.querySelector('#type') 
+formHhousingType.addEventListener('change', (e)=> {
     let target = e.target.value 
     priseCorecting(target)
 })
@@ -78,3 +78,14 @@ form.addEventListener('submit', e => {
     }
 })
 resetFormBtn.addEventListener('click', e=> removedForm(form))
+
+// filtered arr
+
+const mapHousingType = document.querySelector('#housing-type')
+mapHousingType.addEventListener('change', e => {
+    let targetValue = e.target.value
+    if(Array.isArray(cardsArr)){
+        let filteredArr = createFiteringArr(cardsArr, targetValue)
+        createMarkers(filteredArr, map)
+    }
+})
