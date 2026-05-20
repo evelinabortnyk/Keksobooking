@@ -86,7 +86,7 @@ for (let i = 0; i < USSERS_ARR_LENGTH; i++) {
 
 async function sendData() {
     try {
-        const response = await fetch('http://localhost:8080/advertsData', {
+        const response = await fetch('http://localhost:8080/offert', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

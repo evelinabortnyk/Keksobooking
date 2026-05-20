@@ -9,7 +9,7 @@ import { removedForm } from "./removed-form.js";
 
 async function getCards(){
     try {
-        const response = await fetch('http://localhost:8080/advertsData')
+        const response = await fetch('http://localhost:8080/offert')
         if(!response.ok) {
             throw new Error('Error server', response.status)
         }
