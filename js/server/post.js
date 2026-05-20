@@ -36,7 +36,7 @@
 
 let cardsArr = []
 
-const USSERS_ARR_LENGTH = 10
+const USSERS_ARR_LENGTH = 40
 const titelsArr = ['Затишна квартира в самому серці міста', 'Світла та комфортна квартира в центрі', 'Стильне житло в центральному районі', 'Тепла та охайна квартира поруч із усім необхідним', 'Простора та затишна квартира з гарним', 'Комфортне житло в центрі ', 'Невелика, але дуже затишна квартира', 'Затишне гніздечко в самому центрі', 'Приємна квартира для комфортного проживання', 'Чиста та світла квартира в хорошій локації', 'Квартира в центрі', 'Затишне житло для спокійного життя в центрі', 'Квартира з чудовою атмосферою та локацією', 'Гарна квартира поруч із транспортом і магазинами']
 const X_RANGE = { 'min': 35.65000, 'max': 35.70000 }
 const Y_RANGE = { 'min': 139.70000, 'max': 139.80000 }
@@ -56,7 +56,7 @@ function createCard() {
         'avatar': `img/avatars/user0${Math.floor(Math.random() * (8 - 1 + 1)) + 1}.png`,
         'offer': {
             'title': titelsArr[Math.floor(Math.random() * titelsArr.length)],
-            'address': `X: ${(Math.random() * (X_RANGE.max - X_RANGE.min) + X_RANGE.min).toFixed(5)} Y: ${(Math.random() * (Y_RANGE.max - Y_RANGE.min) + Y_RANGE.min).toFixed(5)}`,
+            'address': `${(Math.random() * (X_RANGE.max - X_RANGE.min) + X_RANGE.min).toFixed(5)} ${(Math.random() * (Y_RANGE.max - Y_RANGE.min) + Y_RANGE.min).toFixed(5)}`,
             'price': `${Math.floor(Math.random() * (PRISE_RANGE.max - PRISE_RANGE.min) + PRISE_RANGE.min)} $`,
             'type': typesArr[Math.floor(Math.random() * typesArr.length)],
             'rooms': `${Math.floor(Math.random() * (ROOMS_RANGE.max - ROOMS_RANGE.min) + ROOMS_RANGE.min)} rooms`,

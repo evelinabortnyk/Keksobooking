@@ -1,4 +1,3 @@
-import { displayCards } from "./cards-display.js";
 import { priseCorecting, selectedTime} from "./cards-filtering.js";
 import { form,  mapFilters,  disabledForm, map } from "./create-map.js";
 import { validationForm, featuresAdd} from "./form-validation.js";
@@ -6,6 +5,7 @@ import { addFormData } from "./send-form.js";
 import { avatarUrl, imagesUrlsArr } from "./add_photos.js";
 import { sendForm } from "./server/send-form.js";
 import { removedForm } from "./removed-form.js";
+import { createMarkers } from "./places-markers-create.js";
 
 async function getCards(){
     try {
@@ -22,7 +22,8 @@ async function getCards(){
     }
 }
 const cardsArr = await getCards()
-displayCards(cardsArr)
+
+Array.isArray(cardsArr)? createMarkers(cardsArr, map) : 0
 
 const housingType = document.querySelector('#type') 
 
@@ -52,13 +53,15 @@ disabledForm(filterAtributs, true)
 disabledForm(formAtributs, true)
 
 map.whenReady(() => {
-    form.classList.remove('ad-form-disabled')
-    mapFilters.classList.remove('ad-form-disabled')
+    // console.log(cardsArr.lenght)
+    if (cardsArr.length > 0) {
+        form.classList.remove('ad-form-disabled')
+        mapFilters.classList.remove('ad-form-disabled')
+    } 
     setTimeout(() => {
         disabledForm(filterAtributs, false)
         disabledForm(formAtributs, false)
     }, 1000);
-    
 })
 
 const resetFormBtn = document.querySelector('.ad-form__reset')

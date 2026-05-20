@@ -14,15 +14,21 @@ function disabledForm(arr1,  boolean) {
 }
 
 // map
-
-const map = L.map('map').setView([35.6762, 139.6503], 13);
+const customIcon = L.icon({
+    iconUrl: './img/pin.svg',
+    iconSize: [40, 40]
+})
+ 
+const map = L.map('map').setView([35.6406, 139.7976], 12);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-let marker = L.marker([35.6762, 139.6503], { draggable: true }).addTo(map);
-let markerIcon = document.querySelector('.leaflet-marker-icon').style.width = '41px'
+let marker = L.marker([35.6406, 139.7976], {
+    icon: customIcon, 
+    draggable: true, 
+}).addTo(map);
 
 marker.on('dragend', (e) =>{
     const coords = e.target.getLatLng()

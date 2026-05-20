@@ -33,30 +33,26 @@
 // на значення поля author.avatar об'єкта, що відмальовується.
 
 const card = document.querySelector('#card')
-const canvas = document.querySelector('#map-canvas')
 const fragment =new DocumentFragment()
 
-function displayCards (arr) {
-    arr.forEach(e=>{
-        const offersObj = e.offer
-        const cloneElement = card.content.cloneNode(true);
+function displayCards(e) {
+    const offersObj = e.offer
+    const cloneElement = card.content.cloneNode(true);
 
-        cloneElement.querySelector('.popup__avatar').src = e.avatar
-        cloneElement.querySelector('.popup__title').textContent = offersObj.title
-        cloneElement.querySelector('.popup__text--address').textContent = offersObj.address
-        cloneElement.querySelector('.popup__text--price').textContent = offersObj.price
-        cloneElement.querySelector('.popup__type').textContent = typeCreate(offersObj.type)
-        cloneElement.querySelector('.popup__text--capacity').textContent =`${offersObj.rooms} для ${offersObj.guests}`
-        cloneElement.querySelector('.popup__text--time').textContent =`Заїзд після ${offersObj.checkin}, виїзд до ${offersObj.checkout}`
-        featuresCreate(cloneElement.querySelectorAll('.popup__feature'), offersObj.features)
-        cloneElement.querySelector('.popup__description').textContent =offersObj.description
-        
-        let photosArr = offersObj.photos
-        Array.isArray(photosArr) ? addPhotos(cloneElement.querySelector('.popup__photos'), photosArr) :0
+    cloneElement.querySelector('.popup__avatar').src = e.avatar
+    cloneElement.querySelector('.popup__title').textContent = offersObj.title
+    cloneElement.querySelector('.popup__text--address').textContent = offersObj.address
+    cloneElement.querySelector('.popup__text--price').textContent = offersObj.price
+    cloneElement.querySelector('.popup__type').textContent = typeCreate(offersObj.type)
+    cloneElement.querySelector('.popup__text--capacity').textContent = `${offersObj.rooms} для ${offersObj.guests}`
+    cloneElement.querySelector('.popup__text--time').textContent = `Заїзд після ${offersObj.checkin}, виїзд до ${offersObj.checkout}`
+    featuresCreate(cloneElement.querySelectorAll('.popup__feature'), offersObj.features)
+    cloneElement.querySelector('.popup__description').textContent = offersObj.description
 
-        fragment.appendChild(cloneElement)
-    })
-    // canvas.appendChild(fragment)
+    let photosArr = offersObj.photos
+    Array.isArray(photosArr) ? addPhotos(cloneElement.querySelector('.popup__photos'), photosArr) : 0
+    fragment.appendChild(cloneElement)
+    return fragment
 }
 function typeCreate(data){
     let type = ''
