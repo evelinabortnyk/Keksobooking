@@ -7,16 +7,25 @@ const customIcon = L.icon({
 
 const markersArr =[]
 
+function getRandArr(arr){
+    let arrRand = [...arr];
+    for(let i = arrRand.length -1; i>0; i--){
+        const count = Math.floor(Math.random() * (i + 1));
+        [arrRand[i], arrRand[count]] = [arrRand[count], arrRand[i]]
+    }
+    return arrRand.slice(0 ,10)
+}
 function createMarkers(arr, map){
     markersArr.forEach(marker => map.removeLayer(marker))
 
-    let arrForMarkers = arr.slice(0, 10)
+    let arrForMarkers = getRandArr(arr)
+
     arrForMarkers.forEach(el => {
         let popupWrap = document.createElement('div')
         let popup = displayCards(el)
         popupWrap.appendChild(popup)
 
-        let addressArr = el.offer.address.split(' ')
+        let addressArr = el.offer.address.split(', ')
         const marker = L.marker([addressArr[0], addressArr[1]], {icon: customIcon })  
             .addTo(map)
             .bindPopup(popupWrap)
@@ -24,4 +33,4 @@ function createMarkers(arr, map){
     });
 }
 
-export {createMarkers}
+export {createMarkers, getRandArr}
