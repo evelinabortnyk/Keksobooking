@@ -12,8 +12,8 @@ imagesAddButton.multiple = true
 let avatarUrl= ''
 let imagesUrlsArr= []
 avatar.addEventListener('change', (e)=>{
-    const file = e.target.files[0]
-    let url = addPrewue(file)
+    avatarUrl = e.target.files[0]
+    let url = addPrewue(avatarUrl)
     avatarPreview.src = url
     avatarUrl = url
 })
@@ -25,10 +25,11 @@ imagesAddButton.addEventListener('change', e =>{
     fragment.appendChild(start)
 
     for( let file of e.target.files){
+        imagesUrlsArr.push(file)
+
         let url = addPrewue(file)
         displayUsersPhotos(url)
 
-        imagesUrlsArr.push(url)
     }
     fragment.appendChild(end)
     imagesContainer.appendChild(fragment)

@@ -22,9 +22,9 @@ async function getCards(){
         return 
     }
 }
-const cardsArr = await getCards()
+let cardsArr = await getCards()
 
-Array.isArray(cardsArr)? createMarkers(cardsArr, map) : 0
+Array.isArray(cardsArr) ? createMarkers(cardsArr, map) : 0
 
 const formHhousingType = document.querySelector('#type') 
 formHhousingType.addEventListener('change', (e)=> {
@@ -53,7 +53,6 @@ disabledForm(filterAtributs, true)
 disabledForm(formAtributs, true)
 
 map.whenReady(() => {
-    // console.log(cardsArr.lenght)
     if (cardsArr.length > 0) {
         form.classList.remove('ad-form-disabled')
         mapFilters.classList.remove('ad-form-disabled')
@@ -74,7 +73,7 @@ form.addEventListener('submit', e => {
     if(form.checkValidity() === true) {
         const objDataForm = addFormData(e.target, featuresArr,avatarUrl, imagesUrlsArr)
         sendForm(objDataForm)
-        removedForm(form)
+        location.reload()
     }
 })
 resetFormBtn.addEventListener('click', e=> removedForm(form))
