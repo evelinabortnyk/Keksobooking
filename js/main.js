@@ -6,7 +6,7 @@ import { avatarUrl, imagesUrlsArr } from "./add_photos.js";
 import { sendForm } from "./server/send-form.js";
 import { removedForm } from "./removed-form.js";
 import { createMarkers } from "./places-markers-create.js";
-import { createFiteringArr } from "./data-filtred.js";
+import { createFiltersObj, createFiteringArr , filteredArr} from "./data-filtred.js";
 
 async function getCards(){
     try {
@@ -80,11 +80,22 @@ resetFormBtn.addEventListener('click', e=> removedForm(form))
 
 // filtered arr
 
-const mapHousingType = document.querySelector('#housing-type')
+const mapHousingType = document.querySelector('.map__filters')
+
 mapHousingType.addEventListener('change', e => {
-    let targetValue = e.target.value
-    if(Array.isArray(cardsArr)){
-        let filteredArr = createFiteringArr(cardsArr, targetValue)
+    let filtersObj = createFiltersObj()
+    
+    if (Array.isArray(cardsArr)) {
+        createFiteringArr(filtersObj, cardsArr)
+        // console.log(filteredArr)
         createMarkers(filteredArr, map)
     }
+    // const features = document.querySelector('#housing-features')
+    // let targetValue = e.target.value
+    // let targetId = e.target.id
+    // if(Array.isArray(cardsArr)){
+    //     createFiteringArr(cardsArr, filteredArr, targetId,  targetValue)
+    //     console.log( filteredArr )
+    //     createMarkers(filteredArr, map)
+    // }
 })
