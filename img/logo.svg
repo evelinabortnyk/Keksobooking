@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500">
+  <text
+    x="50%"
+    y="180"
+    text-anchor="middle"
+    font-family="Roboto, Arial, sans-serif"
+    font-size="180"
+    font-weight="700"
+    fill="#000000">
+    KEKSOBOOKING
+  </text>
+
+  <text
+    x="50%"
+    y="320"
+    text-anchor="middle"
+    font-family="Roboto, Arial, sans-serif"
+    font-size="90"
+    font-weight="400"
+    fill="#000000">
+    nearby
+  </text>
+</svg>
