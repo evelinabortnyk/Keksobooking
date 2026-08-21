@@ -25,7 +25,7 @@ function createMarkers(arr, map){
         let popup = displayCards(el)
         popupWrap.appendChild(popup)
 
-        let addressArr = el.offer.address.split(', ')
+        let addressArr = el.offer.address.split(', ') 
         const marker = L.marker([addressArr[0], addressArr[1]], {icon: customIcon })  
             .addTo(map)
             .bindPopup(popupWrap)

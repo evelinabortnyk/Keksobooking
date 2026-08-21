@@ -1,23 +1,23 @@
 {
   "name": "keksobooking",
   "version": "1.0.0",
+  "type": "module",
   "description": "��#\u0000 \u0000K\u0000e\u0000k\u0000s\u0000o\u0000b\u0000o\u0000o\u0000k\u0000i\u0000n\u0000g\u0000\r\u0000 \u0000",
-  "main": "index.js",
+  "main": "file.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node js/server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evelinavegas/Keksobooking.git"
+    "url": "git+https://github.com/evelinabortnyk/Keksobooking.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/evelinavegas/Keksobooking/issues"
+    "url": "https://github.com/evelinabortnyk/Keksobooking/issues"
   },
-  "homepage": "https://github.com/evelinavegas/Keksobooking#readme",
+  "homepage": "https://github.com/evelinabortnyk/Keksobooking#readme",
   "dependencies": {
     "leaflet": "^1.9.4"
   }

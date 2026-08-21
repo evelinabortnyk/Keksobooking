@@ -1,16 +1,16 @@
 import { priseCorecting, selectedTime} from "./cards-filtering.js";
 import { form,  mapFilters,  disabledForm, map } from "./create-map.js";
 import { validationForm, featuresAdd} from "./form-validation.js";
-import { addFormData } from "./send-form.js";
+import { addFormData, sendForm } from "./send-form.js";
 import { avatarUrl, imagesUrlsArr } from "./add_photos.js";
-import { sendForm } from "./server/send-form.js";
 import { removedForm } from "./removed-form.js";
 import { createMarkers } from "./places-markers-create.js";
 import { createFiltersObj, createFiteringArr , filteredArr} from "./data-filtred.js";
 
+
 async function getCards(){
     try {
-        const response = await fetch('http://localhost:8080/offert')
+        const response = await fetch('http://localhost:8080/offers')
         if(!response.ok) {
             throw new Error('Error server', response.status)
         }
@@ -22,9 +22,10 @@ async function getCards(){
         return 
     }
 }
+
 let cardsArr = await getCards()
 
-Array.isArray(cardsArr) ? createMarkers(cardsArr, map) : 0
+Array.isArray(cardsArr) ? createMarkers(cardsArr, map) : ''
 
 const formHhousingType = document.querySelector('#type') 
 formHhousingType.addEventListener('change', (e)=> {
@@ -65,7 +66,7 @@ map.whenReady(() => {
 
 const resetFormBtn = document.querySelector('.ad-form__reset')
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', (e) => {
     e.preventDefault()
     const featuresArr = featuresAdd()
     validationForm()
@@ -87,15 +88,6 @@ mapHousingType.addEventListener('change', e => {
     
     if (Array.isArray(cardsArr)) {
         createFiteringArr(filtersObj, cardsArr)
-        // console.log(filteredArr)
         createMarkers(filteredArr, map)
     }
-    // const features = document.querySelector('#housing-features')
-    // let targetValue = e.target.value
-    // let targetId = e.target.id
-    // if(Array.isArray(cardsArr)){
-    //     createFiteringArr(cardsArr, filteredArr, targetId,  targetValue)
-    //     console.log( filteredArr )
-    //     createMarkers(filteredArr, map)
-    // }
 })
