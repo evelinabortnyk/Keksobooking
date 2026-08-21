@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css"> -->
+
+  <link rel="shortcut icon" href="/assets/favicon-DKlzNjle.ico" type="image/x-icon">
+  <title>Кексобукінг</title>
+  <script type="module" crossorigin src="/assets/index-DTLbNVrw.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-J7jjfFMp.css">
+</head>
+<body>
+  <main>
+    <div class="promo">
+      <h1 class="promo__title visually-hidden"> Neighbors options</h1>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDUwMCI+DQogIDx0ZXh0DQogICAgeD0iNTAlIg0KICAgIHk9IjE4MCINCiAgICB0ZXh0LWFuY2hvcj0ibWlkZGxlIg0KICAgIGZvbnQtZmFtaWx5PSJSb2JvdG8sIEFyaWFsLCBzYW5zLXNlcmlmIg0KICAgIGZvbnQtc2l6ZT0iMTgwIg0KICAgIGZvbnQtd2VpZ2h0PSI3MDAiDQogICAgZmlsbD0iIzAwMDAwMCI+DQogICAgS0VLU09CT09LSU5HDQogIDwvdGV4dD4NCg0KICA8dGV4dA0KICAgIHg9IjUwJSINCiAgICB5PSIzMjAiDQogICAgdGV4dC1hbmNob3I9Im1pZGRsZSINCiAgICBmb250LWZhbWlseT0iUm9ib3RvLCBBcmlhbCwgc2Fucy1zZXJpZiINCiAgICBmb250LXNpemU9IjkwIg0KICAgIGZvbnQtd2VpZ2h0PSI0MDAiDQogICAgZmlsbD0iIzAwMDAwMCI+DQogICAgbmVhcmJ5DQogIDwvdGV4dD4NCjwvc3ZnPg==" alt="Keksobooking. Кекси по-сусідству" width="300">
+    </div>
+
+    <!-- Карта оголошень -->
+    <section class="map">
+
+      <!-- Блок для карт -->
+      <div class="map__canvas" id="map"></div>
+
+      <!-- Фільтрація оголошень -->
+      <div class="map__filters-container">
+        <form action="#" class="map__filters" autocomplete="off">
+          <select name="housing-type" id="housing-type" class="map__filter">
+            <option value="any" selected>Any type of housing</option>
+            <option value="palace">Palace</option>
+            <option value="flat">Flat</option>
+            <option value="house">House</option>
+            <option value="bungalow">Bungalow</option>
+          </select>
+          <select name="housing-price" id="housing-price" class="map__filter">
+            <option value="any" selected>Any price</option>
+            <option value="middle">from 100$</option>
+            <option value="low">from 500$</option>
+            <option value="high">from 1000$</option>
+          </select>
+          <select name="housing-rooms" id="housing-rooms" class="map__filter">
+            <option value="any" selected>Any number of rooms</option>
+            <option value="1">One кімната</option>
+            <option value="2">Two rooms</option>
+            <option value="3">Three rooms</option>
+          </select>
+          <select name="housing-guests" id="housing-guests" class="map__filter">
+            <option value="any" selected>Any number of guests</option>
+            <option value="2">Two guests</option>
+            <option value="1">One guest</option>
+            <option value="0">Not for guests</option>
+          </select>
+          <fieldset id="housing-features" class="map__features">
+            <input type="checkbox" name="features" value="wifi" id="filter-wifi" class="map__checkbox visually-hidden">
+            <label class="map__feature map__feature--wifi" for="filter-wifi">Wi-Fi</label>
+            <input type="checkbox" name="features" value="dishwasher" id="filter-dishwasher" class="map__checkbox visually-hidden">
+            <label class="map__feature map__feature--dishwasher" for="filter-dishwasher">Dishwasher</label>
+            <input type="checkbox" name="features" value="parking" id="filter-parking" class="map__checkbox visually-hidden">
+            <label class="map__feature map__feature--parking" for="filter-parking">Parking</label>
+            <input type="checkbox" name="features" value="washer" id="filter-washer" class="map__checkbox visually-hidden">
+            <label class="map__feature map__feature--washer" for="filter-washer">Washer</label>
+            <input type="checkbox" name="features" value="elevator" id="filter-elevator" class="map__checkbox visually-hidden">
+            <label class="map__feature map__feature--elevator" for="filter-elevator">Elevator</label>
+            <input type="checkbox" name="features" value="conditioner" id="filter-conditioner" class="map__checkbox visually-hidden">
+            <label class="map__feature map__feature--conditioner" for="filter-conditioner">Conditioner</label>
+           </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <!-- Форма оголошень -->
+    <section class="notice">
+      <h2 class="notice__title">Your ad</h2>
+      <form class="ad-form" method="post" enctype="multipart/form-data" action="http://localhost:8080/offers" autocomplete="off">
+        <fieldset class="ad-form-header">
+          <legend class="ad-form-header__title">Your photo (for the map)</legend>
+          <div class="ad-form-header__upload">
+            <div class="ad-form-header__preview">
+              <img src="data:image/svg+xml,%3csvg%20viewBox='0%200%2039%2043'%20style='fill:%20%23989893'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M33.684,28.274%20C32.149,28.272%2030.724,27.576%2029.774,26.364%20L28.730,25.033%20L27.743,26.408%20C26.807,27.712%2025.293,28.490%2023.692,28.488%20C22.661,28.486%2021.671,28.171%2020.830,27.576%20L19.685,26.765%20L18.992,27.985%20C17.865,29.971%2015.749,31.202%2013.471,31.199%20C11.346,31.196%209.374,30.136%208.196,28.361%20L7.639,27.524%20L6.696,27.875%20C6.141,28.081%205.557,28.185%204.959,28.184%20C2.216,28.181%20-0.013,25.945%20-0.009,23.202%20C-0.006,21.142%201.235,19.326%203.155,18.575%20L3.979,18.253%20L3.956,17.239%20C3.959,15.228%205.065,13.404%206.850,12.064%20C6.792,11.707%206.762,11.341%206.762,10.967%20C6.764,9.663%207.136,8.445%207.777,7.410%20C6.156,5.910%204.574,3.904%204.249,1.604%20C4.140,0.832%204.677,0.119%205.449,0.010%20C5.517,0.000%205.585,-0.004%205.652,-0.004%20C6.342,-0.003%206.944,0.507%207.042,1.210%20C7.247,2.664%208.413,4.142%209.735,5.362%20C10.827,4.618%2012.145,4.182%2013.563,4.184%20C16.614,4.188%2019.199,6.214%2020.049,8.990%20C21.246,8.630%2022.523,8.441%2023.832,8.443%20C29.606,8.450%2034.298,12.086%2034.292,16.548%20C34.291,16.744%2034.279,16.955%2034.255,17.194%20L34.146,18.235%20L35.146,18.541%20C37.254,19.185%2038.669,21.099%2038.666,23.305%20C38.662,26.049%2036.427,28.278%2033.684,28.274%20ZM13.560,6.159%20C12.767,6.158%2012.020,6.353%2011.359,6.693%20C11.839,7.045%2012.298,7.347%2012.696,7.587%20C13.363,7.988%2013.579,8.855%2013.178,9.522%20C12.913,9.963%2012.445,10.207%2011.966,10.207%20C11.719,10.206%2011.469,10.141%2011.243,10.005%20C10.818,9.750%2010.115,9.302%209.313,8.694%20C8.947,9.372%208.738,10.147%208.737,10.970%20C8.733,13.626%2010.892,15.790%2013.548,15.794%20C16.203,15.797%2018.367,13.639%2018.371,10.982%20C18.374,8.326%2016.216,6.162%2013.560,6.159%20ZM11.300,32.824%20C11.300,32.824%2011.707,36.755%2011.813,38.642%20C11.854,39.365%2012.318,39.689%2012.602,39.762%20C12.866,39.831%2013.367,39.827%2013.598,39.718%20C13.920,39.565%2014.231,39.440%2014.251,38.555%20C14.288,36.904%2013.862,33.089%2013.862,33.089%20C14.558,33.060%2015.240,32.949%2015.897,32.762%20C15.897,32.762%2016.039,38.438%2016.160,39.217%20C16.284,40.008%2016.861,40.197%2017.387,40.197%20C17.937,40.197%2018.561,39.897%2018.551,39.015%20C18.543,38.207%2018.469,31.560%2018.469,31.560%20C19.232,31.042%2019.918,30.408%2020.494,29.668%20C20.541,29.691%2020.590,29.711%2020.637,29.732%20C20.637,29.732%2020.504,38.399%2020.539,39.060%20C20.586,39.943%2021.170,40.281%2021.818,40.282%20C22.474,40.283%2023.077,39.829%2023.166,39.120%20C23.248,38.463%2023.415,30.380%2023.415,30.380%20C23.508,30.384%2023.602,30.389%2023.696,30.389%20C24.361,30.390%2025.017,30.299%2025.647,30.130%20C25.647,30.130%2025.132,37.811%2025.220,38.388%20C25.343,39.197%2025.848,39.553%2026.526,39.553%20C27.171,39.554%2027.730,39.066%2027.852,38.203%20C27.928,37.664%2028.722,28.462%2028.722,28.462%20C28.755,28.433%2028.788,28.406%2028.819,28.377%20C29.962,29.357%2031.371,29.964%2032.881,30.127%20L31.243,40.600%20C31.027,41.980%2029.708,43.107%2028.312,43.105%20L10.655,43.082%20C9.258,43.080%207.941,41.950%207.730,40.570%20L6.105,29.997%20C6.290,29.969%206.474,29.937%206.657,29.895%20C7.864,31.349%209.492,32.366%2011.300,32.824%20Z'%20class='cls-1'/%3e%3c/svg%3e" alt="Аватар юзера" width="40" height="44">
+            </div>
+            <div class="ad-form__field">
+              <input type="file" id="avatar" name="avatar" class="ad-form-header__input visually-hidden">
+              <label class="ad-form-header__drop-zone" for="avatar">Download<br>photo...</label>
+            </div>
+            <p class="ad-form-header__info">Fill in all the required fields, set a price, upload an avatar and a photo of the accommodation. Come up with an interesting description. It will make the ad more lively and attractive. The resulting ad should give guests a complete idea of ​​your accommodation.</p>
+          </div>
+        </fieldset>
+        <fieldset class="ad-form__element ad-form__element--wide">
+          <label class="ad-form__label" for="title">Ad title</label>
+          <input id="title" name="title" type="text" placeholder="Cute, cozy apartment in the center of Tokyo">
+        </fieldset>
+        <fieldset class="ad-form__element ad-form__element--wide">
+          <label class="ad-form__label" for="address">Address (coordinates)</label>
+          <input id="address" name="address" type="text">
+        </fieldset>
+        <fieldset class="ad-form__element">
+          <label class="ad-form__label" for="type">Type of housing</label>
+          <select id="type" name="type">
+            <option value="bungalow">Bungalow</option>
+            <option value="flat" selected>Flat</option>
+            <option value="house">House</option>
+            <option value="palace">Palace</option>
+          </select>
+        </fieldset>
+        <fieldset class="ad-form__element">
+          <label class="ad-form__label" for="price">Price per night, USD.</label>
+          <input id="price" name="price" type="number" placeholder="5000">
+        </fieldset>
+        <fieldset class="ad-form__element ad-form__element--time">
+          <label class="ad-form__label" for="timein"> Check-in and check-out times</label>
+          <select id="timein" name="timein">
+            <option value="12:00" selected>After 12</option>
+            <option value="13:00">After 13</option>
+            <option value="14:00">After 14</option>
+          </select>
+          <select id="timeout" name="timeout" title="Time to go out">
+            <option value="12:00" selected>until 12</option>
+            <option value="13:00">until 13</option>
+            <option value="14:00"> until 14</option>
+          </select>
+        </fieldset>
+        <fieldset class="ad-form__element">
+          <label class="ad-form__label" for="room_number">Number of rooms</label>
+          <select id="room_number" name="rooms">
+            <option value="1" selected>1 room</option>
+            <option value="2">2 rooms</option>
+            <option value="3">3 rooms</option>
+            <option value="100">100 rooms</option>
+          </select>
+        </fieldset>
+        <fieldset class="ad-form__element">
+          <label class="ad-form__label" for="capacity">Number of places</label>
+          <select id="capacity" name="capacity">
+            <option value="3" selected>for 3 guests</option>
+            <option value="2">for 2 guests</option>
+            <option value="1">for 1 guest</option>
+            <option value="0">Not for guests</option>
+          </select>
+        </fieldset>
+        <fieldset class="ad-form__element ad-form__element--wide features">
+          <legend>Amenities: Wi-Fi, kitchen, parking, laundry, elevator, air conditioning</legend>
+          <input type="checkbox" name="features" value="wifi" id="feature-wifi" class="feature__checkbox visually-hidden">
+          <label class="feature feature--wifi" for="feature-wifi">Wi-Fi</label>
+          <input type="checkbox" name="features" value="dishwasher" id="feature-dishwasher" class="feature__checkbox visually-hidden">
+          <label class="feature feature--dishwasher" for="feature-dishwasher">Dishwasher</label>
+          <input type="checkbox" name="features" value="parking" id="feature-parking" class="feature__checkbox visually-hidden">
+          <label class="feature feature--parking" for="feature-parking">Parking</label>
+          <input type="checkbox" name="features" value="washer" id="feature-washer" class="feature__checkbox visually-hidden">
+          <label class="feature feature--washer" for="feature-washer">Washer</label>
+          <input type="checkbox" name="features" value="elevator" id="feature-elevator" class="feature__checkbox visually-hidden">
+          <label class="feature feature--elevator" for="feature-elevator">Elevator</label>
+          <input type="checkbox" name="features" value="conditioner" id="feature-conditioner" class="feature__checkbox visually-hidden">
+          <label class="feature feature--conditioner" for="feature-conditioner">Conditioner</label>
+        </fieldset>
+        <fieldset class="ad-form__element ad-form__element--wide">
+          <label class="ad-form__label" for="description">Description (optional)</label>
+          <textarea id="description" name="description" placeholder="Here, tell us about how wonderful your home is and in general..."></textarea>
+        </fieldset>
+        <fieldset class="ad-form__element ad-form__element--wide">
+          <label class="ad-form__label">Photo of housing</label>
+          <div class="ad-form__photo-container">
+            <div class="ad-form__upload">
+              <input type="file" id="images" name="images" class="ad-form__input visually-hidden">
+              <label for="images" class="ad-form__drop-zone">Download<br>photos...</label>
+            </div>
+            <div class="ad-form__photo"></div>
+          </div>
+        </fieldset>
+        <fieldset class="ad-form__element ad-form__element--submit">
+          <button class="ad-form__submit" type="submit">Publish</button>
+          or <button class="ad-form__reset" type="reset">clean up</button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer container">
+  </footer>
+
+  <!-- Картка об`яви  -->
+  <template id="card">
+    <article class="popup">
+      <img src="/assets/user01-BbmNQDHi.png" class="popup__avatar" width="70" height="70" alt="Аватар юзера">
+      <h3 class="popup__title">Затишне гніздечко для молодят</h3>
+      <p class="popup__text popup__text--address">102-0082 Tōkyō-to, Chiyoda-ku, Ichibanchō, 14−3</p>
+      <p class="popup__text popup__text--price">5200 <span>грн/ніч</span></p>
+      <h4 class="popup__type">Квартира</h4>
+      <p class="popup__text popup__text--capacity">2 кімнати для 3 гостей</p>
+      <p class="popup__text popup__text--time">Заїзд після 14:00, виїзд до 10:00</p>
+      <ul class="popup__features">
+        <li class="popup__feature popup__feature--wifi"></li>
+        <li class="popup__feature popup__feature--dishwasher"></li>
+        <li class="popup__feature popup__feature--parking"></li>
+        <li class="popup__feature popup__feature--washer"></li>
+        <li class="popup__feature popup__feature--elevator"></li>
+        <li class="popup__feature popup__feature--conditioner"></li>
+      </ul>
+      <p class="popup__description">Чудова квартира-студія у центрі Токіо. Підходить як для туристів, так і для бізнесменів. Квартира повністю укомплектована та нещодавно відремонтована.</p>
+      <div class="popup__photos">
+        <img src="" class="popup__photo" width="45" height="40" alt="Фотографія житла">
+      </div>
+    </article>
+  </template>
+
+  <!-- Повідомлення про успішне створення оголошення-->
+  <template id="success">
+    <div class="success">
+      <p class="success__message">Ваше оголошення<br>успішно розміщено!</p>
+    </div>
+  </template>
+
+  <!-- Повідомлення про помилку створення оголошення -->
+  <template id="error">
+    <div class="error">
+      <p class="error__message">Помилка розміщення оголошення</p>
+      <button type="button" class="error__button">Спробувати знову</button>
+    </div>
+  </template>
+  <template id="form_photo">
+    <div class="form_photo-wrap">
+      <img src="" alt="" class="form__photo-img">
+    </div>
+  </template>
+  <!-- <script src="./node_modules/leaflet/dist/leaflet.js"></script> -->
+</body>
+</html>

@@ -3,7 +3,7 @@ let objData =  {}
 async function sendForm(obj) {
 
     try {
-        const response = await fetch('http://localhost:8080/offers', {
+        const response = await fetch('https://keksobooking.onrender.com/offers', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'aplication/json'
