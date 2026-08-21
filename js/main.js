@@ -10,7 +10,7 @@ import { createFiltersObj, createFiteringArr , filteredArr} from "./data-filtred
 
 async function getCards(){
     try {
-        const response = await fetch('http://localhost:8080/offers')
+        const response = await fetch('https://keksobooking.onrender.com/offers')
         if(!response.ok) {
             throw new Error('Error server', response.status)
         }

@@ -1,3 +1,6 @@
+import L from "leaflet"
+import 'leaflet/dist/leaflet.css';
+
 const form = document.querySelector('.ad-form')
 const mapFilters = document.querySelector('.map__filters')
 const addressForm = document.querySelector('#address') 
