@@ -85,21 +85,4 @@ for (let i = 0; i < USSERS_ARR_LENGTH; i++) {
     cardsArr.push(createCard())
 }
 
-async function sendData() {
-    try {
-        const response = await fetch('http://localhost:8080/offert', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(cardsArr)
-        })
-
-        const result = await response.json()
-
-    } catch (error) {
-        console.log('Error:', error)
-    }
-}
-
-sendData()
+export {cardsArr}

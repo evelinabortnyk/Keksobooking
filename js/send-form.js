@@ -1,5 +1,22 @@
 let objData =  {}
 
+async function sendForm(obj) {
+
+    try {
+        const response = await fetch('http://localhost:8080/offers', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'aplication/json'
+            },
+            body: JSON.stringify(obj)
+        })
+        const data = await response.json()
+    } catch (error) {
+        console.log('error: ', error)        
+    }
+}
+
+
 function addFormData (target, featuresArr, avatar, images) {
     const formData = new FormData(target)
     
@@ -11,10 +28,9 @@ function addFormData (target, featuresArr, avatar, images) {
 
 function createObjForm(data, avatar, featuresArr, images){
     let offer = {}
-
     objData.avatar = avatar
 
-    offer.address = `${data.address}`
+    offer.address = data.address
     offer.checkin = data.timein
     offer.checkout = data.timeout
     offer.description = data.description
@@ -31,4 +47,4 @@ function createObjForm(data, avatar, featuresArr, images){
     return objData
 }
 
-export {addFormData}
+export {addFormData, sendForm}
