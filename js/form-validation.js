@@ -23,7 +23,7 @@ function priceValidation (){
 }
 function titleValidation (){
     if(titleForm.value.length <30){
-        titleForm.setCustomValidity(`min 30 symbols`)
+        titleForm.setCustomValidity(`at least 30 characters`)
     } else {
         titleForm.setCustomValidity('')
     }
@@ -35,7 +35,7 @@ function roomsAndGuestvalidation (guests, rooms, inputValidation) {
     let guestsValue =  +guests.value
 
     if(guestsValue > roomsValue){
-        inputValidation.setCustomValidity(`Not more ${roomsValue} guests`)
+        inputValidation.setCustomValidity(`no more than ${roomsValue} guests`)
     } else if(roomsValue === 100 && guestsValue != 0){
         inputValidation.setCustomValidity('Not for guests')
     } else if(roomsValue !== 100 && guestsValue === 0){

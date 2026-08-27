@@ -1053,6 +1053,10 @@ fieldset {
     margin: 0 120px;
   }
 
+  .ad-form-header__upload{
+    flex-wrap: nowrap;
+  }
+  
   .ad-form{
     justify-content: center;
   }
