@@ -37,7 +37,23 @@
 let cardsArr = []
 
 const USSERS_ARR_LENGTH = 40
-const titelsArr = ['Затишна квартира в самому серці міста', 'Світла та комфортна квартира в центрі', 'Стильне житло в центральному районі', 'Тепла та охайна квартира поруч із усім необхідним', 'Простора та затишна квартира з гарним', 'Комфортне житло в центрі ', 'Невелика, але дуже затишна квартира', 'Затишне гніздечко в самому центрі', 'Приємна квартира для комфортного проживання', 'Чиста та світла квартира в хорошій локації', 'Квартира в центрі', 'Затишне житло для спокійного життя в центрі', 'Квартира з чудовою атмосферою та локацією', 'Гарна квартира поруч із транспортом і магазинами']
+const titelsArr = [
+    'Cozy apartment in the heart of the city',
+    'Bright and comfortable apartment in the city center',
+    'Stylish home in a central neighborhood',
+    'Warm and well-maintained apartment close to everything you need',
+    'Spacious and cozy apartment with a beautiful view',
+    'Comfortable home in the city center',
+    'Small but very cozy apartment',
+    'A cozy nest in the heart of the city',
+    'Pleasant apartment for comfortable living',
+    'Clean and bright apartment in a great location',
+    'Apartment in the city center',
+    'Cozy home for peaceful living in the city center',
+    'Beautiful apartment with a great atmosphere and location',
+    'Nice apartment close to public transport and shops',
+]
+
 const X_RANGE = { 'min': 35.65000, 'max': 35.70000 }
 const Y_RANGE = { 'min': 139.70000, 'max': 139.80000 }
 const PRISE_RANGE = { 'min': 100, 'max': 5000 }
@@ -47,7 +63,28 @@ const typesArr = ['palace', 'flat', 'house', 'bungalow']
 const checkinsArr = ['12:00', '13:00', '14:00']
 const checkoutsArr = ['12:00', '13:00', '14:00']
 const featuresArr = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner']
-const descriptionsArr = ['Квартира повністю мебльована та готова до заселення', 'Простір продуманий до дрібниць для комфортного проживання.', 'У квартирі багато природного світу завдяки великим вікнам.', 'Зручне планування дозволяє ефективно використовувати кожен метр.', 'Сучасний ремонт виконаний у світлих, нейтральних тонах.', 'Кухня оснащена всією необхідною технікою.', 'Ванна кімната чиста, доглянута та функціональна.', 'Є достатньо місця для зберігання речей.', 'Квартира тиха, вікна виходять у спокійний двір.', 'Інтер`єр створює відчуття затишку та домашнього тепла.', 'Житло добре утеплене та підходить для проживання в будь-яку пору року.', 'Усі комунікації працюють справно та без перебоїв.', 'Балкон додає додатковий простір для відпочинку.', 'Високі стелі створюють відчуття простору.', ' Квартира доглянута та регулярно обслуговується.', 'Є швидкий інтернет та всі необхідні підключення.', 'Підлога в хорошому стані, приємна на дотик', 'Освітлення підібране для комфортного перебування у вечірній час.', 'Житло підходить як для однієї людини, так і для пари.', 'Загальна атмосфера квартири спокійному та комфорту']
+const descriptionsArr = [
+    'The apartment is fully furnished and ready to move in.',
+    'The space is thoughtfully designed for comfortable living.',
+    'Large windows provide plenty of natural light.',
+    'The convenient layout makes efficient use of every square meter.',
+    'The modern renovation is finished in light, neutral tones.',
+    'The kitchen is equipped with all the necessary appliances.',
+    'The bathroom is clean, well-maintained, and functional.',
+    'There is plenty of storage space for personal belongings.',
+    'The apartment is quiet, with windows overlooking a peaceful courtyard.',
+    'The interior creates a cozy and welcoming atmosphere.',
+    'The property is well insulated and suitable for living all year round.',
+    'All utilities and systems work properly without interruptions.',
+    'The balcony provides additional space for relaxation.',
+    'High ceilings create a spacious feeling.',
+    'The apartment is well maintained and regularly serviced.',
+    'Fast internet and all necessary connections are available.',
+    'The flooring is in good condition and pleasant to walk on.',
+    'The lighting is designed for a comfortable atmosphere in the evening.',
+    'The apartment is suitable for both a single person and a couple.',
+    'The overall atmosphere of the apartment is calm and comfortable.'
+]
 const photosArr = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg']
 
 

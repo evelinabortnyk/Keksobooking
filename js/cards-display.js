@@ -59,16 +59,16 @@ function typeCreate(data){
 
     switch (data) {
         case 'flat':
-            type = 'Квартира'
+            type = 'Flat'
             break;
         case 'bungalow':
-            type = 'Бунгало'
+            type = 'Bungalow'
             break;
         case 'house':
-            type = 'Будинок'
+            type = 'House'
             break;
         case 'palace':
-            type = 'Палац'
+            type = 'Palace'
             break;
         default:
             break;
